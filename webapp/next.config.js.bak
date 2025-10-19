@@ -1,0 +1,13 @@
+﻿/** @type {import('next').NextConfig} */
+const nextConfig = {
+  // Turbopack root so Next nicht das falsche Verzeichnis errÃ¤t
+  turbopack: {
+    root: ".",
+  },
+  // Verhindert, dass ESLint den Build bricht (nur bis wir Plugin-Probleme gelÃ¶st haben)
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+};
+
+module.exports = nextConfig;
