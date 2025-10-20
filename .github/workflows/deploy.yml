@@ -31,9 +31,9 @@ jobs:
             echo "Pulling latest code..."
             git pull
 
-            if command -v docker >/dev/null 2>&1 && docker compose version >/dev/null 2>&1; then
+            if sudo docker compose version >/dev/null 2>&1; then
               COMPOSE_CMD="docker compose"
-            elif command -v docker-compose >/dev/null 2>&1; then
+            elif sudo docker-compose version >/dev/null 2>&1; then
               COMPOSE_CMD="docker-compose"
             else
               echo "Docker Compose is not installed on the target host." >&2
