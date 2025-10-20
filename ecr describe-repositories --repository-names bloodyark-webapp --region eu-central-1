@@ -1,0 +1,16 @@
+{
+    "repository": {
+        "repositoryArn": "arn:aws:ecr:eu-central-1:882627685475:repository/bloodyark-webapp",
+        "registryId": "882627685475",
+        "repositoryName": "bloodyark-webapp",
+        "repositoryUri": "882627685475.dkr.ecr.eu-central-1.amazonaws.com/bloodyark-webapp",
+        "createdAt": "2025-10-20T00:48:30.602000+00:00",
+        "imageTagMutability": "MUTABLE",
+        "imageScanningConfiguration": {
+            "scanOnPush": false
+        },
+        "encryptionConfiguration": {
+            "encryptionType": "AES256"
+        }
+    }
+}
