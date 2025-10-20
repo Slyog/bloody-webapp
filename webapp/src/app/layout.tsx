@@ -1,32 +1,41 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter as CustomFont } from "next/font/google";
+import { ReactNode } from "react";
+
+import Announcement from "@/components/widgets/Announcement";
+import Footer2 from "@/components/widgets/Footer2";
+import Header from "@/components/widgets/Header";
+import Providers from "@/components/atoms/Providers";
+import { SITE } from "@/config";
 import "./globals.css";
-import React from "react";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const customFont = CustomFont({
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: "--font-custom",
 });
 
 export const metadata: Metadata = {
-  title: "BloodyARK",
-  description: "Survive or Die",
+  title: {
+    template: `%s — ${SITE.name}`,
+    default: SITE.title,
+  },
+  description: SITE.description,
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
+    <html
+      lang="en"
+      className={`motion-safe:scroll-smooth 2xl:text-[24px] ${customFont.variable} font-sans`}
+      suppressHydrationWarning
+    >
+      <body className="bg-white text-gray-900 antialiased dark:bg-slate-900 dark:text-slate-300">
+        <Providers>
+          <Announcement />
+          <Header />
+          <main>{children}</main>
+          <Footer2 />
+        </Providers>
       </body>
     </html>
   );

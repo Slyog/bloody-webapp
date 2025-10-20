@@ -1,4 +1,4 @@
-const path = require("path");
+const { SITE } = require("./src/config.js");
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Use an absolute turbopack root to avoid root inference warnings
@@ -18,6 +18,21 @@ const nextConfig = {
     // Disable static page generation for now
     workerThreads: false,
     cpus: 1,
+  },
+  trailingSlash: SITE.trailingSlash,
+  basePath: SITE.basePathname !== "/" ? SITE.basePathname : "",
+  poweredByHeader: false,
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "images.unsplash.com",
+      },
+      {
+        protocol: "https",
+        hostname: "source.unsplash.com",
+      },
+    ],
   },
 };
 

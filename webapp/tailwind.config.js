@@ -1,3 +1,6 @@
+const defaultTheme = require("tailwindcss/defaultTheme");
+const colors = require("tailwindcss/colors");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -7,7 +10,16 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: colors.rose,
+        secondary: colors.gray,
+      },
+      fontFamily: {
+        sans: ["var(--font-custom)", ...defaultTheme.fontFamily.sans],
+      },
+    },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/typography")],
+  darkMode: "class",
 };
