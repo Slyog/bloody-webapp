@@ -7,7 +7,7 @@ on:
       - dev
 
 env:
-  EC2_PROJECT_DIR: /home/ec2-user/bloody-webapp
+  EC2_PROJECT_DIR: /home/ec2-user/bloody-webapp/webapp
   DOCKER_COMPOSE_FILE: docker-compose.yml
 
 jobs:
