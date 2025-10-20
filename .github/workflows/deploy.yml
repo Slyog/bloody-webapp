@@ -33,8 +33,11 @@ jobs:
 
             if command -v docker >/dev/null 2>&1 && docker compose version >/dev/null 2>&1; then
               COMPOSE_CMD="docker compose"
-            else
+            elif command -v docker-compose >/dev/null 2>&1; then
               COMPOSE_CMD="docker-compose"
+            else
+              echo "Docker Compose is not installed on the target host." >&2
+              exit 1
             fi
 
             echo "Stopping old containers..."
