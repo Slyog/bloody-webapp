@@ -9,6 +9,7 @@ services:
     depends_on:
       - mongo
     environment:
+      - NODE_OPTIONS=
       - MONGODB_URI=mongodb://mongo:27017/bloodyarkdb
     restart: unless-stopped
 
