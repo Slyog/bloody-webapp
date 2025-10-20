@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const { SITE } = require("./src/config.js");
 /** @type {import('next').NextConfig} */
 const nextConfig = {

@@ -1,40 +1,40 @@
 import type { Metadata } from "next";
-import { Inter as CustomFont } from "next/font/google";
+import { Orbitron } from "next/font/google";
 import { ReactNode } from "react";
 
-import Announcement from "@/components/widgets/Announcement";
-import Footer2 from "@/components/widgets/Footer2";
-import Header from "@/components/widgets/Header";
-import Providers from "@/components/atoms/Providers";
+import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
+import Providers from "@/components/Providers";
 import { SITE } from "@/config";
 import "./globals.css";
 
-const customFont = CustomFont({
+const orbitron = Orbitron({
   subsets: ["latin"],
-  variable: "--font-custom",
+  variable: "--font-futuristic",
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: {
-    template: `%s — ${SITE.name}`,
-    default: SITE.title,
-  },
+  title: SITE.title,
   description: SITE.description,
+  icons: {
+    icon: "/favicon.png",
+  },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html
       lang="en"
-      className={`motion-safe:scroll-smooth 2xl:text-[24px] ${customFont.variable} font-sans`}
+      className={orbitron.variable}
       suppressHydrationWarning
     >
-      <body className="bg-white text-gray-900 antialiased dark:bg-slate-900 dark:text-slate-300">
+      <body className="bg-dark text-neutral-100 antialiased transition-colors duration-300 ease-in-out">
         <Providers>
-          <Announcement />
-          <Header />
-          <main>{children}</main>
-          <Footer2 />
+          <Navbar />
+          <main className="pt-20">{children}</main>
+          <Footer />
         </Providers>
       </body>
     </html>

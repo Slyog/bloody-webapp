@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 module.exports.SITE = {
   name: "BloodyARK",
 
@@ -5,7 +7,7 @@ module.exports.SITE = {
   basePathname: "/",
   trailingSlash: false,
 
-  title: "BloodyARK — ARK Survival Ascended Community Hub",
+  title: "BloodyARK — Evolve or Die",
   description:
-    "Launch your next ARK season with BloodyARK: marketing landing, events, and player community in one polished experience.",
+    "BloodyARK returns in 2026 with a red-black ASA cluster built for disciplined raiders, fair raid windows, and a community-funded prize pool.",
 };
