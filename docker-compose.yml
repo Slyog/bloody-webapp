@@ -1,0 +1,45 @@
+version: '3.9'
+
+services:
+  webapp:
+    build: ./webapp
+    container_name: bloody_webapp
+    restart: always
+    expose:
+      - "3000"
+    networks:
+      - webnet
+
+  nginx:
+    image: nginx:latest
+    container_name: bloody_nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/ssl:/etc/letsencrypt
+      - ./nginx/html:/usr/share/nginx/html
+    depends_on:
+      - webapp
+    networks:
+      - webnet
+
+  certbot:
+    image: certbot/certbot
+    container_name: bloody_certbot
+    volumes:
+      - ./nginx/ssl:/etc/letsencrypt
+      - ./nginx/conf.d:/etc/nginx/conf.d
+      - ./nginx/html:/usr/share/nginx/html
+    entrypoint: >
+      sh -c "certbot certonly --webroot \
+             --webroot-path=/usr/share/nginx/html \
+             -d bloody.gg -d www.bloody.gg \
+             --email admin@bloody.gg \
+             --agree-tos --no-eff-email"
+
+networks:
+  webnet:
+    driver: bridge
