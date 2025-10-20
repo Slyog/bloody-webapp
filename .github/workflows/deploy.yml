@@ -33,10 +33,10 @@ jobs:
             git pull
 
             echo "Stopping old containers..."
-            sudo docker-compose down || true
+            sudo docker compose down || true
 
             echo "Rebuilding and starting new containers..."
-            sudo docker-compose up --build -d
+            sudo docker compose up --build -d
 
             echo "Deployment complete ✅"
 
